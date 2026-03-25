@@ -55,7 +55,7 @@ export default function OnboardingSection({ onSelectSample, onStartBlank }) {
     const formData = new FormData();
     formData.append('resume', file);
     try {
-      const response = await fetch('http://localhost:5001/api/upload', {
+      const response = await fetch('https://smartats-backend-sl6i.onrender.com/api/upload', {
         method: 'POST',
         body: formData,
       });
