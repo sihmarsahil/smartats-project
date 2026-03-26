@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { FileText, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,12 +11,10 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import { auth } from './firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-
 function AppContent() {
   const location = useLocation();
   const [user, setUser] = useState(null);
   const isHomePage = location.pathname === '/';
-
   useEffect(() => {
     try {
       const unsub = onAuthStateChanged(auth, (u) => setUser(u));
@@ -25,28 +23,27 @@ function AppContent() {
       console.error("Auth error:", err);
     }
   }, []);
-
   return (
     <div className="min-h-screen flex flex-col font-sans bg-surface-50">
         <nav className="sticky top-0 bg-white/70 backdrop-blur-xl border-b border-indigo-100/50 z-50 transition-all duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <Link to="/" className="group flex items-center gap-2">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
+            <Link to="/" className="group flex items-center gap-2 flex-shrink-0">
               <motion.div 
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="w-10 h-10 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-200"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-200"
               >
-                <FileText className="w-6 h-6" />
+                <FileText className="w-5 h-5 sm:w-6 sm:h-6" />
               </motion.div>
-              <span className="text-2xl font-black text-slate-900 tracking-tighter">
+              <span className="text-xl sm:text-2xl font-black text-slate-900 tracking-tighter">
                 Smart<span className="text-indigo-600">ATS</span>
               </span>
             </Link>
             
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1 bg-slate-100/50 p-1.5 rounded-2xl border border-slate-200/50">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <div className="flex items-center gap-1 bg-slate-100/50 p-1 sm:p-1.5 rounded-xl sm:rounded-2xl border border-slate-200/50">
                 <Link 
                   to="/builder" 
-                  className={`relative px-6 py-2 rounded-xl text-sm font-black transition-all duration-300 ${
+                  className={`relative px-3 sm:px-6 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[10px] sm:text-sm font-black transition-all duration-300 ${
                     location.pathname === '/builder' 
                     ? "text-indigo-600" 
                     : "text-slate-500 hover:text-slate-900"
@@ -55,19 +52,19 @@ function AppContent() {
                   {location.pathname === '/builder' && (
                     <motion.div 
                       layoutId="nav-pill" 
-                      className="absolute inset-0 bg-white shadow-sm rounded-xl z-0"
+                      className="absolute inset-0 bg-white shadow-sm rounded-lg sm:rounded-xl z-0"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
-                  <span className="relative z-10 flex items-center gap-2">
-                    <Sparkles className={`w-3.5 h-3.5 ${location.pathname === '/builder' ? 'text-indigo-600' : 'text-slate-400'}`} />
-                    Builder
+                  <span className="relative z-10 flex items-center gap-1 sm:gap-2">
+                    <Sparkles className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${location.pathname === '/builder' ? 'text-indigo-600' : 'text-slate-400'}`} />
+                    <span className="hidden xs:inline">Builder</span>
+                    <span className="xs:hidden">Build</span>
                   </span>
                 </Link>
-
                 <Link 
                   to="/ats-checker" 
-                  className={`relative px-6 py-2 rounded-xl text-sm font-black transition-all duration-300 ${
+                  className={`relative px-3 sm:px-6 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[10px] sm:text-sm font-black transition-all duration-300 ${
                     location.pathname === '/ats-checker' 
                     ? "text-indigo-600" 
                     : "text-slate-500 hover:text-slate-900"
@@ -76,27 +73,29 @@ function AppContent() {
                   {location.pathname === '/ats-checker' && (
                     <motion.div 
                       layoutId="nav-pill" 
-                      className="absolute inset-0 bg-white shadow-sm rounded-xl z-0"
+                      className="absolute inset-0 bg-white shadow-sm rounded-lg sm:rounded-xl z-0"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
-                  <span className="relative z-10">ATS Checker</span>
+                  <span className="relative z-10 text-center">
+                    <span className="hidden xs:inline">ATS Checker</span>
+                    <span className="xs:hidden">Check</span>
+                  </span>
                 </Link>
               </div>
-
               {user ? (
                 <button 
                   onClick={() => signOut(auth)}
-                  className="px-5 py-2 bg-slate-950 text-white text-xs font-black rounded-xl hover:bg-slate-800 transition shadow-lg shadow-slate-200"
+                  className="px-3 sm:px-5 py-1.5 sm:py-2 bg-slate-950 text-white text-[10px] sm:text-xs font-black rounded-lg sm:rounded-xl hover:bg-slate-800 transition shadow-lg shadow-slate-200 flex-shrink-0"
                 >
-                  SIGN OUT
+                  LOGOUT
                 </button>
               ) : (
                 <Link 
                   to="/login"
-                  className="px-5 py-2 bg-indigo-600 text-white text-xs font-black rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200"
+                  className="px-3 sm:px-5 py-1.5 sm:py-2 bg-indigo-600 text-white text-[10px] sm:text-xs font-black rounded-lg sm:rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 flex-shrink-0"
                 >
-                  SIGN IN
+                  LOGIN
                 </Link>
               )}
             </div>
@@ -131,7 +130,6 @@ function AppContent() {
       </div>
   );
 }
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -160,7 +158,6 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
 export default function App() {
   return (
     <ErrorBoundary>
