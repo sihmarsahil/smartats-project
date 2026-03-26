@@ -26,10 +26,9 @@ export default function HomePage() {
       {/* Background Split - Responsive adjustment */}
       <div 
         className="absolute top-0 right-0 w-full lg:w-[45%] h-1/2 lg:h-full bg-[#f4f7f9] -z-10"
-        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 90%)' }} // Mobile friendly clip
+        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 90%)' }}
       ></div>
       
-      {/* Desktop specific clip-path logic using a media query style div or just simplified for both */}
       <div className="hidden lg:block absolute top-0 right-0 w-[45%] h-full bg-[#f4f7f9] -z-10"
         style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)' }}
       ></div>
@@ -44,7 +43,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Fast. Easy. Effective.
+            Built by Sahil Sihmar 🧑‍💻
           </motion.h3>
           
           <motion.h1 
@@ -60,7 +59,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Build a professional resume in minutes. SmartATS helps you showcase your skills on a layout that recruiters (and bots) love.
+            Whether you want to build a new resume or improve an existing one, let SmartATS help you stand out to recruiters and land your dream job.
           </motion.p>
           
           <div className="flex flex-col xs:flex-row items-center justify-center lg:justify-start gap-4">
@@ -80,40 +79,52 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Right Section (Resume Mockup) - Order 1 on Mobile to show it first */}
+        {/* Right Section (Sahil's Branded Resume Mockup) */}
         <div className="w-full lg:w-[45%] relative flex justify-center lg:justify-end items-center order-1 lg:order-2">
           
-          {/* Abstract background shapes - Simplified for mobile */}
           <div className="absolute w-40 h-40 sm:w-64 sm:h-64 bg-[#bdf0d4] rounded-full blur-3xl opacity-30 -z-10"></div>
 
-          {/* The Hero Resume Mock - Responsive sizing */}
+          {/* The Hero Resume Mock - CUSTOMIZED WITH SAHIL'S INFO */}
           <motion.div 
-            className="relative w-[260px] xs:w-[320px] sm:w-[380px] lg:w-[420px] aspect-[1/1.4] bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden z-10"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            className="relative w-[280px] xs:w-[320px] sm:w-[380px] lg:w-[420px] aspect-[1/1.4] bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden z-10"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, type: 'spring' }}
           >
-             {/* Resume internal content remains mostly same but using flex-shrink/grow */}
-             <div className="absolute top-0 left-0 w-[28%] h-full bg-[#963721]"></div>
+             {/* Left Sidebar (Red) */}
+             <div className="absolute top-0 left-0 w-[30%] h-full bg-[#8c2a1e]"></div>
+             
              <div className="relative z-10 p-4 sm:p-6 flex h-full">
-                <div className="w-[28%] flex flex-col items-center pt-4">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-200 border-2 border-[#ffc559] mb-4 overflow-hidden shadow-md">
-                     <div className="w-full h-full bg-slate-300"></div>
+                {/* Left Column Mock */}
+                <div className="w-[30%] h-full flex flex-col items-center pt-8 pr-2">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-[#ffc559] bg-slate-300 overflow-hidden mb-6 flex-shrink-0 relative -ml-8 sm:-ml-12 shadow-lg">
+                    <img 
+                      src="/assets/sahil_new.jpg" 
+                      alt="Sahil Sihmar" 
+                      className="w-full h-full object-cover" 
+                      onError={(e) => e.target.src = "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400"}
+                    />
                   </div>
-                  <div className="w-10 h-1 bg-white/20 rounded mb-2"></div>
-                  <div className="w-8 h-1 bg-white/10 rounded"></div>
+                  <div className="w-12 h-1 bg-white/30 rounded-full mb-3 -ml-4"></div>
+                  <div className="w-8 h-1 bg-white/20 rounded-full mb-8 -ml-4"></div>
                 </div>
-                <div className="w-[72%] pl-4 sm:pl-6 pt-4">
-                  <div className="h-4 sm:h-6 bg-[#8c2a1e]/20 w-3/4 rounded mb-2"></div>
-                  <div className="h-2 sm:h-3 bg-slate-100 w-1/2 rounded mb-6"></div>
+                
+                {/* Right Column Content - BRANDED */}
+                <div className="w-[70%] pl-4 sm:pl-6 pt-6">
+                  <h2 className="text-2xl sm:text-3xl font-black text-[#8c2a1e] mb-1">Sahil Sihmar</h2>
+                  <h3 className="text-[10px] sm:text-xs font-bold text-slate-500 mb-6 uppercase tracking-wider">Software Engineer</h3>
+                  
                   <div className="space-y-2 mb-6">
-                    <div className="h-1.5 bg-slate-100 rounded w-full"></div>
-                    <div className="h-1.5 bg-slate-100 rounded w-5/6"></div>
+                    <div className="w-full flex items-center gap-2"><div className="w-2.5 h-2.5 bg-[#8c2a1e] rounded-full"></div><div className="h-1 bg-slate-100 rounded-full w-full"></div></div>
+                    <div className="w-full flex items-center gap-2"><div className="w-2.5 h-2.5 bg-[#8c2a1e] rounded-full"></div><div className="h-1 bg-slate-100 rounded-full w-3/4"></div></div>
                   </div>
-                  <div className="h-3 bg-[#8c2a1e]/10 w-1/4 rounded mb-3"></div>
+                  
+                  <p className="text-[8px] text-slate-400 mb-6 leading-relaxed">Passionate developer building modern web solutions and AI-driven tools. Specializing in React, Node.js, and scaling seamless user experiences.</p>
+                  
+                  <div className="h-3 bg-[#8c2a1e]/10 w-1/4 rounded mb-4"></div>
                   <div className="space-y-3">
-                    <div className="h-1 bg-slate-100 rounded w-full"></div>
-                    <div className="h-1 bg-slate-100 rounded w-full"></div>
-                    <div className="h-1 bg-slate-100 rounded w-full"></div>
+                    <div className="flex justify-between items-center"><div className="h-1 bg-slate-200 w-16 rounded-full"></div><div className="flex gap-0.5"><div className="w-1 h-1 bg-[#8c2a1e] rounded-full"></div><div className="w-1 h-1 bg-[#8c2a1e] rounded-full"></div><div className="w-1 h-1 bg-[#8c2a1e] rounded-full"></div></div></div>
+                    <div className="flex justify-between items-center"><div className="h-1 bg-slate-200 w-20 rounded-full"></div><div className="flex gap-0.5"><div className="w-1 h-1 bg-[#8c2a1e] rounded-full"></div><div className="w-1 h-1 bg-[#8c2a1e] rounded-full"></div><div className="w-1 h-1 bg-slate-200 rounded-full"></div></div></div>
                   </div>
                 </div>
              </div>
@@ -121,40 +132,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Steps Section - Responsive Grid */}
+      {/* Rest of the sections remain same for consistency */}
       <section className="bg-white border-t border-slate-50 py-16 lg:py-24 relative z-10">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900">How It Works</h2>
             <p className="mt-3 text-sm sm:text-xl text-slate-500">Get hired in three simple steps.</p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {steps.map((step, index) => (
-              <div 
-                key={index}
-                className="bg-white p-6 sm:p-10 rounded-2xl shadow-sm border border-slate-100 text-center hover:shadow-lg transition-all"
-              >
-                <div className="w-14 h-14 sm:w-20 sm:h-20 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <step.icon className="w-6 h-6 sm:w-10 sm:h-10 text-indigo-600" />
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center">
+                <div className="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <step.icon className="w-8 h-8 text-indigo-600" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 sm:mb-4">{step.title}</h3>
-                <p className="text-slate-500 text-sm sm:text-base leading-relaxed">{step.description}</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{step.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Trust Section - Responsive Grid */}
-      <section className="py-16 lg:py-24 text-center bg-[#f4f7f9] relative z-10">
+      
+      <section className="py-16 text-center bg-[#f4f7f9] relative z-10">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-black text-[#1a2b53] mb-8 sm:mb-12">Why Use SmartATS?</h2>
+          <h2 className="text-2xl sm:text-3xl font-black text-[#1a2b53] mb-8">Why Use SmartATS?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
             {['Optimized for ATS bots', 'Professional typography', 'Clean, minimalistic design', 'Free to use & download'].map((item, i) => (
               <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                 <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span className="text-slate-800 font-bold text-sm sm:text-base">{item}</span>
+                <span className="text-slate-800 font-bold text-sm">{item}</span>
               </div>
             ))}
           </div>
