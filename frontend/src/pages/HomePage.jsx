@@ -43,7 +43,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Built by Sahil Sihmar 🧑‍💻
+            🚀 Trusted by 500+ Job Seekers . Built by Sahil Sihmar 🧑‍💻
           </motion.h3>
           
           <motion.h1 
